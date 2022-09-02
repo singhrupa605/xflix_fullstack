@@ -1,0 +1,29 @@
+.video-form {
+  box-shadow: 0px 11px 15px 0px #00000033;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.16)
+    ),
+    linear-gradient(0deg, #121212, #121212);
+  width: 400px;
+  align-self: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffffde;
+}
+
+#menu-item {
+  font-size: 16px;
+  font-family: Robot;
+  font-weight: 400;
+}

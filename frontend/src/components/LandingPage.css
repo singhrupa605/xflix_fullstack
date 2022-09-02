@@ -1,0 +1,109 @@
+
+.box
+{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input
+{
+    color: rgb(243, 249, 255) !important
+}
+
+.genre-panel
+{
+ background-color: #383737;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ min-height: 16vh;
+ padding: 1.5rem;
+}
+
+.inner-panel
+{
+    display :flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width:35rem;
+    /* padding: 1rem; */
+
+}
+
+.genre
+{
+    display: flex;
+    color : white;
+    align-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.genre-button
+{
+    background-color: white;
+    border-radius: 20px;
+    padding: 0.7rem;
+    color : #586069 ;
+    font-size: 0.9rem;
+    border : none;
+    font-family: Roboto;
+    margin-top : 0.8rem;
+    margin-bottom : 0.8rem;
+
+}
+
+
+.genre-button:hover{
+    cursor: pointer;
+    background-color: #ededed;
+
+
+}
+
+.sort-dropdown
+{
+   margin-left: 1rem;
+   font-family: Roboto ;
+   background-color: white ;
+   height: 2.5rem;
+   margin-top: 1rem;
+  
+}
+
+.css-1s2u09g-control
+{
+   color: #586069  !important ;
+    background-color: white ;
+    border-radius: 20px!important;
+    
+}
+
+
+.grid-container
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.display-grid
+{
+    width:80%;
+}
+#searchbar::placeholder
+{ 
+    font-size: 1rem;
+    color: #9e9fa0  !important ;
+
+}
+
+#searchbar
+{
+    color: white  !important ;
+    font-size: 1rem;
+    font-family: Roboto;
+}
+
