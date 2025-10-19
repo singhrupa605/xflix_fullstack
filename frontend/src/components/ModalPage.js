@@ -30,7 +30,7 @@ const ModalPage = ({ handleClose, open }) => {
     };
     if (validateInput(dataToPost)) {
       try {
-        console.log(dataToPost);
+        
         const res = await axios.post(`${config.endpoint}`, dataToPost);
         if (res.status === 201) {
           enqueueSnackbar("Video Uploaded Successfully", {

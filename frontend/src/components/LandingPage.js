@@ -51,40 +51,25 @@ const LandingPage = () => {
   const fetchVideos = async (queryString = "") => {
     setLoading(true);
     // console.log("Query :  " + queryString);
-    
-    try
-    {
+
+    try {
       const response = await axios.get(`${config.endpoint}?${queryString}`);
       if (response.status === 200) {
         setVideos(response.data.videos);
         setLoading(false);
       }
-    }
-    catch (error) {
-
-      if(error.response.status === 404)
-      {
+    } catch (error) {
+      if (error.response.status === 404) {
         setLoading(false);
-        enqueueSnackbar(
-          "No video found for your search",
-          { variant: "warning" }
-        );
-      }
-      else
-      {
+      } else {
         setLoading(false);
         enqueueSnackbar(
           "Something went wrong. Check the backend console for more details",
           { variant: "error" }
         );
       }
-     
-      }
-     
-    
-  }
-  
-    
+    }
+  };
 
   //Creating styled custom button for genre panel
   const GenreButton = styled(ToggleButton)({
