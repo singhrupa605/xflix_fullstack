@@ -1,6 +1,5 @@
 import { Button, Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React from "react";
 import "./Header.css";
 import UploadIcon from "@mui/icons-material/Upload";
 import AppBar from "@mui/material/AppBar";

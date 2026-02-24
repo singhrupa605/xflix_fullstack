@@ -16,13 +16,12 @@ import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { config } from "../App";
 import Header from "./Header";
 import VideoGrid from "./VideoGrid";
 import "./VideoPage.css";
-import { useHistory } from "react-router";
 
 const VideoPage = () => {
   const { enqueueSnackbar } = useSnackbar();
