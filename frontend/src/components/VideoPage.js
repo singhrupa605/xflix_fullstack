@@ -16,7 +16,7 @@ import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import  { useEffect, useState } from "react";
+import  { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { config } from "../App";
 import Header from "./Header";
@@ -31,7 +31,7 @@ const VideoPage = () => {
   const params = useParams();
   const [votes, setVotes] = useState({ upVote: false, downVote: false });
 
-  const getAllVideos = async () => {
+  const getAllVideos = useCallback(async () => {
     setLoading(true);
     const URL = `${config.endpoint}`;
     try {
@@ -54,9 +54,9 @@ const VideoPage = () => {
         { variant: "error" }
       );
     }
-  };
+  },[]);
 
-  const getVideoData = async () => {
+  const getVideoData = useCallback(async () => {
     const videoId = params.id.replace(":", "");
     setLoading(true);
     try {
@@ -81,7 +81,7 @@ const VideoPage = () => {
         return null;
       }
     }
-  };
+  },[]);
 
   const VotingButton = styled(Button)({
     backgroundColor: "rgb(56, 55, 55)",
@@ -122,10 +122,10 @@ const VideoPage = () => {
     }
   };
 
-  const increaseViewCount = async (id) => {
+  const increaseViewCount = useCallback(async (id) => {
     const url = `${config.endpoint}/${id}/views`;
     await performPatchCall(url);
-  };
+  },[]);
 
   const updateVoteCount = async (name, id) => {
     const URL = `${config.endpoint}/${id}/votes`;
@@ -154,7 +154,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     getAllVideos();
-  }, []);
+  }, [getAllVideos]);
 
   useEffect(() => {
     const performInitials = async () => {
@@ -164,7 +164,7 @@ const VideoPage = () => {
     };
 
     performInitials();
-  }, [params.id]);
+  }, [params.id, getVideoData, increaseViewCount]);
 
   return (
     <Stack className="video-page-box" spacing={1} direction="column">

@@ -11,7 +11,7 @@ import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { config } from "../App";
 import Header from "./Header";
 import "./LandingPage.css";
@@ -30,7 +30,6 @@ const LandingPage = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState("releaseDate");
- console.log(config.endpoint)
   /// Debouncing used to reduce the API calls  to the backend
   const debounceSearch = (searchTextValue) => {
     clearTimeout(debounceTimeout);
@@ -39,7 +38,7 @@ const LandingPage = () => {
       let queryString = getQueryString(
         searchTextValue,
         contentRating,
-        selectedGenres.toString()
+        selectedGenres.toString(),
       );
       fetchVideos(queryString);
     }, 500);
@@ -47,7 +46,7 @@ const LandingPage = () => {
   };
 
   //Fetching all the videos on page load
-  const fetchVideos = async (queryString = "") => {
+  const fetchVideos = useCallback(async (queryString = "") => {
     setLoading(true);
 
     try {
@@ -63,11 +62,11 @@ const LandingPage = () => {
         setLoading(false);
         enqueueSnackbar(
           "Something went wrong. Check the backend console for more details",
-          { variant: "error" }
+          { variant: "error" },
         );
       }
     }
-  };
+  }, []);
 
   //Creating styled custom button for genre panel
   const GenreButton = styled(ToggleButton)({
@@ -150,7 +149,7 @@ const LandingPage = () => {
       title,
       contentRating,
       selectedGenres,
-      value
+      value,
     );
     fetchVideos(queryString);
     setSortBy(value);
@@ -159,7 +158,7 @@ const LandingPage = () => {
   //Fetching All videos on page load
   useEffect(() => {
     fetchVideos();
-  }, []);
+  }, [fetchVideos]);
 
   return (
     <Box className="box">
