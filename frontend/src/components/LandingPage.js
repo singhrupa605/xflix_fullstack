@@ -66,7 +66,7 @@ const LandingPage = () => {
         );
       }
     }
-  }, []);
+  }, [enqueueSnackbar]);
 
   //Creating styled custom button for genre panel
   const GenreButton = styled(ToggleButton)({
