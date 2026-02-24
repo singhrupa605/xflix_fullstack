@@ -7,6 +7,7 @@ const envVarSchema = Joi.object()
   .keys({
     PORT : Joi.number().default(3000),
     MONGODB_URL: Joi.string().description("Mongo DB Url").required(),
+    
   })
   .unknown();
 const { value: envVars, error } = envVarSchema
@@ -18,6 +19,6 @@ if (error) {
 module.exports = {
   port: envVars.PORT,
   mongoose: {
-    url: envVars.MONGODB_URL,
+    url: envVars.MONGODB_URL
   },
 };

@@ -1,3 +1,2 @@
-mongo xflix --eval "db.dropDatabase()" 
-mongoimport -d xflix -c videos --file data/xflix_data.json
-
+mongosh xflix --eval "db.dropDatabase()"
+mongoimport --db xflix --collection videos --file data/xflix_data.json --jsonArray

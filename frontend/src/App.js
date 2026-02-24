@@ -4,8 +4,7 @@ import LandingPage from "./components/LandingPage";
 import VideoPage from "./components/VideoPage";
 
 export const config = {
-  endpoint :`http://localhost:8082/v1/videos`
-};
+  endpoint : process.env.REACT_APP_API_BASE_URL};
 
 function App() {
   return (

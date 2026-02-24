@@ -31,7 +31,7 @@ const LandingPage = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState("releaseDate");
-
+ console.log(config.endpoint)
   /// Debouncing used to reduce the API calls  to the backend
   const debounceSearch = (searchTextValue) => {
     clearTimeout(debounceTimeout);
@@ -50,7 +50,6 @@ const LandingPage = () => {
   //Fetching all the videos on page load
   const fetchVideos = async (queryString = "") => {
     setLoading(true);
-    // console.log("Query :  " + queryString);
 
     try {
       const response = await axios.get(`${config.endpoint}?${queryString}`);
