@@ -54,7 +54,7 @@ const VideoPage = () => {
         { variant: "error" }
       );
     }
-  },[]);
+  },[enqueueSnackbar]);
 
   const getVideoData = useCallback(async () => {
     const videoId = params.id.replace(":", "");
@@ -81,7 +81,7 @@ const VideoPage = () => {
         return null;
       }
     }
-  },[]);
+  },[enqueueSnackbar,params.id]);
 
   const VotingButton = styled(Button)({
     backgroundColor: "rgb(56, 55, 55)",
@@ -105,7 +105,7 @@ const VideoPage = () => {
     },
   });
 
-  const performPatchCall = async (URL, data = null) => {
+  const performPatchCall =  useCallback(async (URL, data = null) => {
     try {
       if (data) {
         await axios.patch(URL, data);
@@ -120,12 +120,12 @@ const VideoPage = () => {
         enqueueSnackbar("Something went wrong", { variant: "error" });
       }
     }
-  };
+  },[enqueueSnackbar]);
 
   const increaseViewCount = useCallback(async (id) => {
     const url = `${config.endpoint}/${id}/views`;
     await performPatchCall(url);
-  },[]);
+  },[performPatchCall]);
 
   const updateVoteCount = async (name, id) => {
     const URL = `${config.endpoint}/${id}/votes`;
